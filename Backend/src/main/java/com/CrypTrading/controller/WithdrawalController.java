@@ -5,10 +5,10 @@ import com.CrypTrading.model.User;
 import com.CrypTrading.model.Wallet;
 import com.CrypTrading.model.WalletTransaction;
 import com.CrypTrading.model.Withdrawal;
+import com.CrypTrading.service.TransactionService;
 import com.CrypTrading.service.UserService;
 import com.CrypTrading.service.WalletService;
 import com.CrypTrading.service.WithdrawalService;
-import lombok.With;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,8 @@ public class WithdrawalController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private WalletTransactionService walletTransactionService;
+    @Autowired
+    private TransactionService transactionService;
 
     @PostMapping("/api/withdrawal/{amount}")
     public ResponseEntity<?> withdrawalRequest(@PathVariable Long amount, @RequestHeader("Authorization") String jwt) throws Exception {
@@ -39,12 +39,12 @@ public class WithdrawalController {
         Withdrawal withdrawal = withdrawalService.requestWithdrawal(amount, user);
         walletService.addBalance(userWallet, -withdrawal.getAmount());
 
-//        WalletTransaction walletTransaction = walletTransactionService.createTransaction(
-//                userWallet,
-//                WalletTransactionType.WITHDRAWAL, null,
-//                "Bank account withdrawal",
-//                withdrawal.getAmount()
-//        );
+        WalletTransaction walletTransaction = transactionService.createTransaction(
+                userWallet,
+                WalletTransactionType.WITHDRAWAL, null,
+                "Bank account withdrawal",
+                withdrawal.getAmount()
+        );
 
         return new ResponseEntity<>(withdrawal, HttpStatus.OK);
     }

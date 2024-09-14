@@ -49,6 +49,7 @@ public class WatchlistServiceImpl implements WatchlistService {
         } else {
             watchlist.getCoins().add(coin);
         }
+        watchlistRepo.save(watchlist);
         return coin;
     }
 }

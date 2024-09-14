@@ -8,6 +8,7 @@ import com.CrypTrading.response.AuthResponse;
 import com.CrypTrading.service.CustomUserDetailsService;
 import com.CrypTrading.service.EmailService;
 import com.CrypTrading.service.TwoFactorOTPService;
+import com.CrypTrading.service.WatchlistService;
 import com.CrypTrading.utils.OtpUtils;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class AuthController {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private WatchlistService watchlistService;
+
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> register(@RequestBody User user) throws Exception {
 
@@ -52,6 +56,8 @@ public class AuthController {
         newUser.setPassword(user.getPassword());
 
         User savedUser = userRepository.save(newUser);
+
+        watchlistService.createWatchlist(savedUser);
 
         Authentication auth = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(auth);
@@ -104,7 +110,7 @@ public class AuthController {
         AuthResponse res = new AuthResponse();
         res.setJwt(jwt);
         res.setStatus(true);
-        res.setMessage("Login Successfullk");
+        res.setMessage("Login Successfully");
 
         return new ResponseEntity<>(res, HttpStatus.CREATED);
 
