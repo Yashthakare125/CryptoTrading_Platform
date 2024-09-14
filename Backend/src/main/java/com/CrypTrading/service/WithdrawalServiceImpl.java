@@ -3,7 +3,7 @@ package com.CrypTrading.service;
 import com.CrypTrading.domain.WithdrawalStatus;
 import com.CrypTrading.model.User;
 import com.CrypTrading.model.Withdrawal;
-import com.CrypTrading.response.WithdrawalRepo;
+import com.CrypTrading.repository.WithdrawalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

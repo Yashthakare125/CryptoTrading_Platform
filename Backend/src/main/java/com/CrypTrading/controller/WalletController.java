@@ -1,10 +1,9 @@
 package com.CrypTrading.controller;
 
-import com.CrypTrading.model.Order;
-import com.CrypTrading.model.User;
-import com.CrypTrading.model.Wallet;
-import com.CrypTrading.model.WalletTransaction;
+import com.CrypTrading.model.*;
+import com.CrypTrading.response.PaymentResponse;
 import com.CrypTrading.service.OrderService;
+import com.CrypTrading.service.PaymentService;
 import com.CrypTrading.service.UserService;
 import com.CrypTrading.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,10 @@ public class WalletController {
 
     @Autowired
     private OrderService orderService;
-    
+
+    @Autowired
+    private PaymentService paymentService;
+
     @GetMapping("/api/wallet")
     public ResponseEntity<Wallet> getUserWallet(@RequestHeader("Authorization") String jwt) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
@@ -55,4 +57,24 @@ public class WalletController {
 
         return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
     }
+
+    @PutMapping("/api/wallet/deposit")
+    public ResponseEntity<Wallet> addBalanceToWallet(@RequestHeader("Authorization") String jwt, @RequestParam(name = "order_id") Long orderId, @RequestParam(name="payment_id") String paymentId) throws Exception {
+
+        User user = userService.findUserProfileByJwt(jwt);
+
+        Wallet wallet = walletService.getUserWallet(user);
+
+        PaymentOrder order = paymentService.getPaymentOrderById(orderId);
+
+        Boolean status = paymentService.proceedPaymentOrder(order, paymentId);
+
+        if(status) {
+            wallet = walletService.addBalance(wallet, order.getAmount());
+        }
+
+        return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
+    }
+
+
 }

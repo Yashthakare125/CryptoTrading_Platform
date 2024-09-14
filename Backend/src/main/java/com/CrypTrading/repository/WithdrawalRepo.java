@@ -1,4 +1,4 @@
-package com.CrypTrading.response;
+package com.CrypTrading.repository;
 
 import com.CrypTrading.model.Withdrawal;
 import org.springframework.data.jpa.repository.JpaRepository;
