@@ -1,6 +1,8 @@
+import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { DragHandleHorizontalIcon } from '@radix-ui/react-icons'
+import { AvatarImage } from '@radix-ui/react-avatar'
+import { AvatarIcon, DragHandleHorizontalIcon } from '@radix-ui/react-icons'
 import React from 'react'
 
 const Navbar = () => {
@@ -15,11 +17,14 @@ const Navbar = () => {
 				</SheetTrigger>
 				<SheetContent className="w-72 border-r-0 flex felx-col justify-center" side="left">
 					<SheetHeader>
-						<SheetTitle>Are you absolutely sure?</SheetTitle>
-						<SheetDescription>
-							This action cannot be undone. This will permanently delete your account
-							and remove your data from our servers.
-						</SheetDescription>
+						<SheetTitle>
+							<div className="text-3xl flex justify-center items-center gap-1">
+								<Avatar>
+									<AvatarIcon src="https://www.cdnlogo.com/logos/c/21/coinbene.svg"/>
+								</Avatar>
+							</div>
+						</SheetTitle>
+						
 					</SheetHeader>
 				</SheetContent>
 			</Sheet>
