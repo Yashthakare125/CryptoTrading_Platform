@@ -24,6 +24,10 @@ public class WalletServiceImpl implements WalletService {
         if(wallet == null) {
             wallet = new Wallet();
             wallet.setUser(user);
+//            Remove it
+            wallet.setBalance(BigDecimal.valueOf(100000));
+//            till here
+
             walletRepo.save(wallet);
         }
         return wallet;
