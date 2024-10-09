@@ -32,11 +32,7 @@ const TopUpForm = () => {
 
 				<RadioGroup onValueChange={handlePaymentMethod} className="flex" defaultValue="RAZORPAY">
 					<div className="flex items-center space-x-2 border p-3 px-5 rounded-md cursor-pointer">
-						<RadioGroupItem
-							className="hidden"
-							value="RAZORPAY"
-							id="r1"
-						/>
+						<RadioGroupItem className="hidden" value="RAZORPAY" id="r1" />
 						<Label htmlFor="r1" className="flex items-center cursor-pointer">
 							<div className="flex items-center justify-center" style={{ height: '48px', width: '48px' }}>
 								{paymentMethod === 'RAZORPAY' && <DotFilledIcon style={{ width: '24px', height: '24px' }} />}
@@ -48,11 +44,7 @@ const TopUpForm = () => {
 					</div>
 
 					<div className="flex items-center space-x-2 border p-3 px-5 rounded-md cursor-pointer">
-						<RadioGroupItem
-							className="hidden"
-							value="STRIPE"
-							id="r2"
-						/>
+						<RadioGroupItem className="hidden" value="STRIPE" id="r2"/>
 						<Label htmlFor="r2" className="flex items-center cursor-pointer">
 							<div className="flex items-center justify-center" style={{ height: '48px', width: '48px' }}>
 								{paymentMethod === 'STRIPE' && <DotFilledIcon style={{ width: '24px', height: '24px' }} />}
