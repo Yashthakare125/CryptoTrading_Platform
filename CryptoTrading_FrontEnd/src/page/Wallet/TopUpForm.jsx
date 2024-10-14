@@ -13,6 +13,7 @@ const TopUpForm = () => {
 	};
 
 	const [paymentMethod, setPaymentMethod] = useState('RAZORPAY');
+
 	const handlePaymentMethod = (value) => {
 		setPaymentMethod(value);
 	};
@@ -30,11 +31,14 @@ const TopUpForm = () => {
 			<div>
 				<h1 className="pb-1">Select Payment Method</h1>
 
-				<RadioGroup onValueChange={handlePaymentMethod} className="flex" defaultValue="RAZORPAY">
-					<div className="flex items-center space-x-2 border p-3 px-5 rounded-md cursor-pointer">
+				<RadioGroup onValueChange={handlePaymentMethod} className="flex" value={paymentMethod}>
+					<div
+						onClick={() => handlePaymentMethod('RAZORPAY')}
+						className="flex items-center space-x-2 p-3 px-5 rounded-md cursor-pointer"
+					>
 						<RadioGroupItem className="hidden" value="RAZORPAY" id="r1" />
 						<Label htmlFor="r1" className="flex items-center cursor-pointer">
-							<div className="flex items-center justify-center" style={{ height: '48px', width: '48px' }}>
+							<div className="flex items-center" style={{ height: '48px', width: '48px' }}>
 								{paymentMethod === 'RAZORPAY' && <DotFilledIcon style={{ width: '24px', height: '24px' }} />}
 							</div>
 							<div className="bg-white rounded-md px-5 py-2 w-32">
@@ -43,10 +47,13 @@ const TopUpForm = () => {
 						</Label>
 					</div>
 
-					<div className="flex items-center space-x-2 border p-3 px-5 rounded-md cursor-pointer">
-						<RadioGroupItem className="hidden" value="STRIPE" id="r2"/>
+					<div
+						onClick={() => handlePaymentMethod('STRIPE')}
+						className="flex items-center space-x-2 p-3 px-5 rounded-md cursor-pointer"
+					>
+						<RadioGroupItem className="hidden" value="STRIPE" id="r2" />
 						<Label htmlFor="r2" className="flex items-center cursor-pointer">
-							<div className="flex items-center justify-center" style={{ height: '48px', width: '48px' }}>
+							<div className="flex items-center" style={{ height: '48px', width: '48px' }}>
 								{paymentMethod === 'STRIPE' && <DotFilledIcon style={{ width: '24px', height: '24px' }} />}
 							</div>
 							<div className="bg-white rounded-md px-5 py-1 w-32">
