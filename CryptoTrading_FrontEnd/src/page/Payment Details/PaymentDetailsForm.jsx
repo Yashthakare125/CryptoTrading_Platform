@@ -9,7 +9,7 @@ function PaymentDetailsForm() {
 	const form = useForm({
 		resolver: "",
 		defaultValues: {
-			accontHolderName: "",
+			accountHolderName: "",
 			isfc: "",
 			accountNumber: "",
 			bankName:"",
