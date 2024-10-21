@@ -5,7 +5,7 @@ import Navbar from './page/Navbar/Navbar'
 import Portfolio from './page/Portfolio/Portfolio'
 import Activity from './page/Activity/Activity'
 import Wallet from './page/Wallet/Wallet'
-import WIthdrawal from './page/Withdrawal/WIthdrawal'
+import Withdrawal from './page/Withdrawal/Withdrawal'
 import PaymentDetails from './page/Payment Details/PaymentDetails'
 import StockDetails from './page/StockDetails/StockDetails'
 import Watchlist from './page/Watchlist/Watchlist'
@@ -23,7 +23,7 @@ function App() {
 			<Route path='/portfolio' element={<Portfolio/>}/>
 			<Route path='/activity' element={<Activity/>}/>
 			<Route path='/wallet' element={<Wallet/>}/>
-			<Route path='/withdrawal' element={<WIthdrawal/>}/>
+			<Route path='/withdrawal' element={<Withdrawal/>}/>
 			<Route path='/payment-details' element={<PaymentDetails/>}/>
 			<Route path='/market/:id' element={<StockDetails/>}/>
 			<Route path='/watchlist' element={<Watchlist/>}/>
