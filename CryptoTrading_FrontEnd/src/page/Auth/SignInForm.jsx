@@ -1,20 +1,27 @@
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { login } from '@/State/Auth/Action'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 function SignInForm() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const form = useForm({
 		resolver: "",
 		defaultValues: {
 			email: "",
 			password: ""
 		}
-	})
+	});
+
 	const onSubmit = (data) => {
-		console.log(data)
-	}
+		dispatch(login({data, navigate}));
+		console.log(data);
+	};
 	return (
 		<div>
 			<h1 className="text-xl font-bold text-center pb-3">Login</h1>
