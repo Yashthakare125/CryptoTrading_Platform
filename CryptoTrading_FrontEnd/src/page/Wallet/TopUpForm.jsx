@@ -2,12 +2,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup } from '@/components/ui/radio-group';
+import { paymentHandler } from '@/State/Wallet/Action';
 import { DotFilledIcon } from '@radix-ui/react-icons';
 import { RadioGroupItem } from '@radix-ui/react-radio-group';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const TopUpForm = () => {
 	const [amount, setAmount] = useState('');
+	const dispatch = useDispatch();
+	
 	const handleChange = (e) => {
 		setAmount(e.target.value);
 	};
@@ -20,6 +24,12 @@ const TopUpForm = () => {
 
 	const handleSubmit = () => {
 		console.log(amount, paymentMethod);
+		dispatch(paymentHandler({
+			jwt: localStorage.getItem("jwt"),
+			paymentMethod,
+			amount
+		}));
+		
 	};
 
 	return (

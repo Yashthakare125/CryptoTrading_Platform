@@ -1,7 +1,7 @@
 import axios from "axios"
 import { LOGIN_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS, GET_USER_FAILURE, LOGOUT } from "./ActionTypes";
 
-export const register=(userData)=>async dispatch=>{
+export const register=(userData)=>async (dispatch)=>{
 	
 	dispatch({type: REGISTER_REQUEST});
 
