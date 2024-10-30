@@ -24,7 +24,7 @@ public class PaymentdetailsController {
         User user = userService.findUserProfileByJwt(jwt);
 
         PaymentDetails paymentDetails = paymentDetailService.addPaymentDetails(
-                paymentDetailsRequest.getAccNumber(), paymentDetailsRequest.getAccHolderName(), paymentDetailsRequest.getIfsc(), paymentDetailsRequest.getBankName(), user);
+                paymentDetailsRequest.getAccountNumber(), paymentDetailsRequest.getAccountHolderName(), paymentDetailsRequest.getIfsc(), paymentDetailsRequest.getBankName(), user);
 
         return new ResponseEntity<>(paymentDetails, HttpStatus.CREATED);
     }

@@ -12,9 +12,9 @@ public class PaymentDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String accNumber;
+    private String accountNumber;
 
-    private String accHolderName;
+    private String accountHolderName;
 
     private String ifsc;
 

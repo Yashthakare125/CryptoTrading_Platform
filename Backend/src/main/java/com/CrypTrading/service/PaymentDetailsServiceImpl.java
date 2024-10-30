@@ -14,11 +14,11 @@ public class PaymentDetailsServiceImpl implements PaymentDetailService{
     private PaymentDetailsRepo paymentDetailsRepo;
 
     @Override
-    public PaymentDetails addPaymentDetails(String accNumber, String accHolderName, String ifsc, String bankName, User user) {
+    public PaymentDetails addPaymentDetails(String accountNumber, String accountHolderName, String ifsc, String bankName, User user) {
         PaymentDetails paymentDetails = new PaymentDetails();
 
-        paymentDetails.setAccNumber(accNumber);
-        paymentDetails.setAccHolderName(accHolderName);
+        paymentDetails.setAccountNumber(accountNumber);
+        paymentDetails.setAccountHolderName(accountHolderName);
         paymentDetails.setIfsc(ifsc);
         paymentDetails.setBankName(bankName);
         paymentDetails.setUser(user);
