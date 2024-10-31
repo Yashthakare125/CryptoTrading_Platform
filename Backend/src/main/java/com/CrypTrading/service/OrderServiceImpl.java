@@ -96,7 +96,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     public Order sellAsset(Coin coin, double quantity, User user) throws Exception {
-        if(quantity > 0) {
+//        System.out.println(quantity);
+        if(quantity <= 0) {
             throw new Exception("Quantity should be greater than 0");
         }
 

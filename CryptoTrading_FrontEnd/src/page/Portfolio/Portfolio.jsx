@@ -1,8 +1,20 @@
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { getUserAssets } from '@/State/Asset/Action'
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Portfolio = () => {
+
+	const dispatch = useDispatch();
+
+
+	const {asset} = useSelector(store => store);
+
+	useEffect(() => {
+		dispatch(getUserAssets(localStorage.getItem("jwt")))
+	}, [])
+
 	return (
 		<div className="p-5 lg:px-20">
 			<h1 className = "font-bold text-3xl pb-5">Portfolio</h1>
@@ -18,19 +30,19 @@ const Portfolio = () => {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, index) =>
+					{asset.userAssets.map((item, index) =>
 						<TableRow kye={index}>
 							<TableCell className="font-medium justify-start flex items-center gap-2">
 								<Avatar className='-z-50'>
-									<AvatarImage src="https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png?1696501400" />
+									<AvatarImage className="h-6" src={item.coin.image} />
 								</Avatar>
-								<span>Bitcoin</span>
+								<span>{item.coin.name}</span>
 							</TableCell>
-							<TableCell className="text-center">BTC</TableCell>
-							<TableCell className="text-center">43345279494</TableCell>
-							<TableCell className="text-center">1260709241842</TableCell>
-							<TableCell className="text-center">2.94112 %</TableCell>
-							<TableCell className="text-center">63813</TableCell>
+							<TableCell className="text-center">{item.coin.symbol.toUpperCase()}</TableCell>
+							<TableCell className="text-center">{item.quantity}</TableCell>
+							<TableCell className="text-center">{item.coin.price_change_24h}</TableCell>
+							<TableCell className="text-center">{item.coin.price_change_percentage_24h}</TableCell>
+							<TableCell className="text-center">{item.coin.total_volume}</TableCell>
 						</TableRow>
 					)}
 				</TableBody>

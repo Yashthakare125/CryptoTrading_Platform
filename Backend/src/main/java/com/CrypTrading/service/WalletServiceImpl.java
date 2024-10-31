@@ -122,7 +122,7 @@ public class WalletServiceImpl implements WalletService {
             wallet = new Wallet();
             wallet.setUser(user);
             // Remove it
-            wallet.setBalance(BigDecimal.valueOf(100000));
+            wallet.setBalance(BigDecimal.valueOf(100000000));
             // till here
             wallet = walletRepo.save(wallet);
 
