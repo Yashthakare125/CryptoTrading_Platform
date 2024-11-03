@@ -1,0 +1,13 @@
+.authContainer {
+	/* background-image: "https://zosh-treading.vercel.app/assets/crypto-7678815_1920-Lm8m_thz.jpg"; */
+	background-image: url("https://thumbs.dreamstime.com/b/creative-blockchain-wallpaper-creative-glowing-blockchain-wallpaper-cyberspace-cryptocurrency-concept-d-rendering-111776855.jpg");
+	height: 100vh;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.bgBlur {
+	backdrop-filter: blur(10px);
+}

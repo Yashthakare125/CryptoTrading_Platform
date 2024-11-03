@@ -51,8 +51,9 @@ public class AuthController {
         }
 
         User newUser = new User();
-        newUser.setFullName((user.getFullName()));
+        newUser.setFullName(user.getFullName());
         newUser.setEmail(user.getEmail());
+//        System.out.println(user.getFullName() + " " + user.getEmail());
         newUser.setPassword(user.getPassword());
 
         User savedUser = userRepository.save(newUser);
@@ -72,6 +73,8 @@ public class AuthController {
         return new ResponseEntity<>(res, HttpStatus.CREATED);
 
     }
+
+
 
     @PostMapping("/signin")
     public ResponseEntity<AuthResponse> login(@RequestBody User user) throws Exception {
